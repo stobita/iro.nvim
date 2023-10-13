@@ -11,4 +11,9 @@ function M.highlight(highlights)
 	end
 end
 
+function M.load()
+	vim.g.colors_name = "iro"
+	vim.o.termguicolors = true
+end
+
 return M

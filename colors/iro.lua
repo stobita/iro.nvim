@@ -1,29 +1,20 @@
--- mytheme.lua
-vim.g.colors_name = "mytheme"
+vim.g.colors_name = "iro"
 
--- 背景がダークモードの場合
-vim.opt.background = "dark"
-
--- ここに色の定義を追加します。
 local colors = {
+	white1 = "#ffffff",
+	black1 = "#0b0e0e",
 	red = "#ff0000",
 	green = "#00ff00",
 	blue = "#0000ff",
+	blue1 = "#537178",
 	black = "#000000",
-	-- その他の色...
 }
 
--- ここでハイライトグループを定義します。
 local highlight_groups = {
-	Normal = { fg = colors.red, bg = colors.black },
-	Comment = { fg = colors.green },
-	-- その他のハイライト...
+	Normal = { foreground = colors.white1, background = colors.black1 },
+	Comment = { foreground = colors.blue1 },
 }
 
--- ハイライトグループの色を適用します。
-for group, colors in pairs(highlight_groups) do
-	local style = "NONE"
-	local fg = colors.fg or "NONE"
-	local bg = colors.bg or "NONE"
-	vim.api.nvim_command("highlight " .. group .. " guifg=" .. fg .. " guibg=" .. bg .. " gui=" .. style)
+for group, props in pairs(highlight_groups) do
+	vim.api.nvim_set_hl(0, group, props)
 end
